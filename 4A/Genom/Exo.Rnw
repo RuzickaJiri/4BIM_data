@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\section{SeqInr}
+<<>>=
+library(seqinr)
+alp = c('A','T','C','G')
+seq=sample(alp,30,replace = T)
+seq
+translate(seq)
+rev(seq)
+comp(rev(seq))
+@
+
+\section{Goldtable}
+<<>>=
+setwd("~/4A/Genom")
+gold = read.delim("goldtable.txt", header = T, sep = '\t', dec = ".")
+chrom = gold$CHROMOSOME.COUNT
+king = gold$SUPERKINGDOM
+plas = gold$PLASMID.COUNT
+x = seq(1,1394)
+plot(x,chrom)
+chromBac = 0
+plasBac = 0
+
+for (i in 1:length(king)){
+  if (king[i] == 'Bacteria'){
+    chromBac[i] = chrom[i]
+    plasBac[i] = plas[i]
+  } else if (king[i] == 'Eukaryota'){
+    chromEuc[i] = chrom[i]
+  }
+}
+par(mfrow=c(1,2))
+boxplot(chromBac)
+boxplot(plasBac)
+
+@
+
+<<>>=
+setwd("~/4A/Genom")
+gold = read.table("goldtable.txt", header = T, sep = '\t', dec = ".", quote = "", comment.char = "")
+dim(gold)
+names(gold)
+summary(gold$SUPERKINGDOM)
+dim(gold[gold$SUPERKINGDOM=='Bacteria' | gold$SUPERKINGDOM=='Archaea',])
+summary(gold$PROJECT.STATUS)
+goldProcPubl = gold[(gold$SUPERKINGDOM=='Bacteria' | gold$SUPERKINGDOM=='Archaea') & (gold$PROJECT.STATUS=='complete' | gold$PROJECT.STATUS=='Complete and Published'),]
+dim(goldProcPubl)
+
+table(goldProcPubl$CHROMOSOME.COUNT)
+table(goldProcPubl$PLASMID.COUNT)
+par(mfrow=c(1,2))
+barplot(table(goldProcPubl$CHROMOSOME.COUNT),col = rainbow(5))
+barplot(table(goldProcPubl$PLASMID.COUNT),col = rainbow(10))
+par(mfrow=c(1,1))
+plot(table(goldProcPubl$CHROMOSOME.COUNT, goldProcPubl$PLASMID.COUNT),col = rainbow(10))
+par(mfrow=c(1,1))
+barplot(t(table(goldProcPubl$CHROMOSOME.COUNT, goldProcPubl$PLASMID.COUNT)),col = rainbow(10))
+
+@
+
+
+\end{document}

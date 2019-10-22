@@ -1,0 +1,173 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\section{Blé}
+<<>>=
+setwd("~/4A/Stats")
+ble = read.table("ble.txt", header = T, dec = ".")
+head(ble)
+attach(ble)
+parcelle_f = as.factor(parcelle)
+table(parcelle_f,variete)
+@
+Croisé - toutes les modalités sont analysées à travers toutes les modalités
+Complet - 
+Contraire de croisé est hierarchisé - 
+
+<<>>=
+lm1 = lm(rendement~parcelle_f*variete)
+anova(lm1)
+@
+
+<<>>=
+lm2 = lm(rendement~parcelle_f+variete)
+anova(lm2)
+@
+Si les variétés étaient aléatoires, parcelles aussi - modèle complètement aléatoire
+On doit tester par rapport à l'interaction
+<<>>=
+interaction.plot(parcelle_f,variete,rendement)
+lm3 = lm(rendement~variete)
+anova(lm3)
+@
+
+lm3 - modèle à un facteur
+on teste variété à l'intéraction + parcelle - c'est la triche, on néglige les parcelles
+cela nous fait perdre une information dans nos données qui est fondamentale
+
+\section{Prodlait}
+<<>>=
+prod = read.table("prodlait.dat", header = T, dec = ".")
+head(prod)
+attach(prod)
+interaction.plot(race,Regime,prodlait)
+lm1 = lm(prodlait~race*Regime)
+anova(lm1)
+@
+Race - effet aléatoire - très significatif
+Regime - effet fixe - on a pas le droit de regarder
+
+
+<<>>=
+lm2 = lm(prodlait~Regime*race)
+anova(lm2)
+@
+Pas intéressant
+
+<<>>=
+lm2 = aov(prodlait~Regime+race+Error(Regime:race))
+summary(lm3)
+@
+Pour faire correctement un modèle mixte avec répetition
+2 modèles : 1 lm et 1 aov
+la race - l'effet aléatoire - on ne peut pas intérpreter la race sur le modèle aov
+regime - effet fixe - pas significatif, très limite
+
+La race introduit un effet aléatoire supplementaire dans l'exercice.
+
+Estimer les composantes de covariance - estimer sigma interaction et sigma race
+
+(1.5 - 6.25)/4 = 0
+E(Vsab) - variance/n
+
+
+\section{Tournesol}
+<<>>=
+setwd("~/4A/Stats")
+tournesol = read.table("tournesol.txt", header = T, dec = ".")
+head(tournesol)
+attach(tournesol)
+@
+plan factoriel à effet mixte
+on a à la fois effet aléatoire et effet melangé
+plan croisé complet équilibré
+
+Hypothèses :  independance des variables - difficile à tester - dans l'énoncé
+              normalité des résidues - à posteriori
+              variance constante - ne depend pas de lignes et de colonnes
+              
+bartlett - tester les variances
+<<>>=
+bartlett.test(teneur, testeur:origine)
+testeur:origine
+@
+homocédasticité - égalité des variances
+
+<<>>=
+lm1 = lm(teneur~testeur*origine)
+@
+plan est équilibré et donc les décompositions carrées sont orthogonales
+testeur*origine ~ origine*testeur
+
+<<>>=
+summary(lm1)
+anova(lm1)
+@
+anova - On peut regarder que le testeur - effet aléatoire
+
+<<>>=
+interaction.plot(testeur, origine, teneur)
+@
+
+<<>>=
+lm2 = aov(teneur~origine+testeur+Error(testeur:origine))
+summary(lm2)
+@
+les machines apportent un biais dans l'analyse
+les huiles sont les memes wesh
+
+<<>>=
+par(mfrow=c(2,2))
+plot(lm1)
+@
+
+<<>>=
+shapiro.test(lm1$residuals)
+@
+
+Test de Levene
+<<>>=
+lm3 = lm(abs(lm1$residuals)~origine*testeur)
+anova(lm3)
+@
+teste la linéarité du modèle
+test global 
+
+
+\section{Psouris}
+
+<<>>=
+setwd("~/4A/Stats")
+pdsouris = read.table("pdsouris.txt", header = T, dec = ".")
+head(pdsouris)
+#attach(pdsouris)
+mere=as.factor(pdsouris$mere)
+pere = pdsouris$pere
+@
+c'est pas un plan croisé
+plan complet - tous les croisements sont faits
+plan croisé - on peut croiser toutes les modalités de 1 avec toutes les modalités de l'autre
+
+<<>>=
+lm1 = lm(poids~pere+mere)
+anova(lm1)
+@
+j'ai pas le droit de regarder les peres
+les meres sont significatives, elles ont un effet
+
+<<>>=
+par(mfrow=c(1,2))
+plot(mere,poids)
+plot(pere,poids)
+@
+
+<<>>=
+lm2 = aov(poids~pere+Error(mere))
+summary(lm2)
+@
+aov c'est comme lm mais on peut définir notre erreur
+
+
+\end{document}

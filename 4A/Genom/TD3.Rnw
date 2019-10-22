@@ -1,0 +1,83 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+<<>>=
+setwd("~/4A/Genom")
+genomsize = read.delim("genomsize.txt", header = T, sep = '\t', dec = ".")
+
+dim(genomsize)
+names(genomsize)
+summary(genomsize$CAT)
+proc = genomsize[genomsize$CAT=='1',]
+summary(proc$G_SIZE)
+euca = genomsize[genomsize$CAT=='2',]
+summary(euca$G_SIZE)
+unver = genomsize[genomsize$CAT=='3',]
+summary(unver$G_SIZE)
+plant = genomsize[genomsize$CAT=='4',]
+summary(plant$G_SIZE)
+vert = genomsize[genomsize$CAT=='5',]
+summary(vert$G_SIZE)
+
+barplot(log10(genomsize$G_SIZE),col = genomsize$CAT)
+v=na.omit(genomsize[,c(1,4,5)])
+u=v[rev(order(v$ETA)),]
+barplot(u$ETA, col = u$CAT, log10 = "y", names.arg = u$SP, las=3)
+
+# Corélation taille de génome/taux de mutations
+new_v = na.omit(genomsize[,c(1,3,4,5)])
+cor(new_v)
+shapiro.test(new_v$G_SIZE)
+shapiro.test(log10(new_v$G_SIZE))
+shapiro.test(log10(new_v$ETA))
+# données pas normales
+cor.test(log10(new_v$G_SIZE),log10(new_v$ETA),method = "spearman")
+#on utilise un test non paramétrique 
+#H0 - y a pas de correlation
+#si les données normales, on utilise pearson (méthode par défaut)
+@
+
+On fait les tests sur les autres colonnes.
+
+<<>>=
+# Corélation taille de génome/introns
+new_v = na.omit(genomsize[,c(1,3,4,6)])
+shapiro.test(v$INT_N)
+# données pas normales
+cor.test(log10(v$G_SIZE),log10(v$INT_N),method = "pearson")
+# corelation positive
+@
+
+<<>>=
+# Corélation taille de génome/introns
+new_v = na.omit(genomsize[,c(1,3,4,7)])
+v = new_v[which(new_v$INT_L>0),]
+shapiro.test(log10(new_v$INT_L))
+# données pas normales
+cor.test(log10(new_v$G_SIZE),log10(new_v$INT_L),method = "spearman")
+
+@
+
+<<>>=
+# Corélation taille de génome/introns
+new_v = na.omit(genomsize[,c(1,3,4,8)])
+#cor(new_v)
+v = new_v[which(v$TE_N>0),]
+shapiro.test(log10(v$TE_N))
+# données pas normales
+cor.test(log10(v$G_SIZE),log10(v$TE_N),method = "spearman")
+
+@
+
+<<>>=
+# Corélation taille de génome/introns
+new_v = na.omit(genomsize[,c(1,2,3)])
+#cor(new_v)
+shapiro.test(log10(v$GEN))
+# données pas normales
+cor.test(log10(v$G_SIZE),log10(v$GEN),method = "spearman")
+@
+
+\end{document}

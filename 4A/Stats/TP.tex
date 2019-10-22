@@ -1,0 +1,394 @@
+\documentclass{article}
+
+\usepackage{Sweave}
+\begin{document}
+\input{TP-concordance}
+
+\section{Blé}
+\begin{Schunk}
+\begin{Sinput}
+> setwd("~/4A/Stats")
+> ble = read.table("ble.txt", header = T, dec = ".")
+> head(ble)
+\end{Sinput}
+\begin{Soutput}
+  parcelle variete rendement
+1        1       A     61.00
+2        2       A     70.92
+3        3       A     55.94
+4        1       L     70.80
+5        2       L     66.44
+6        3       L     68.12
+\end{Soutput}
+\begin{Sinput}
+> attach(ble)
+> parcelle_f = as.factor(parcelle)
+> table(parcelle_f,variete)
+\end{Sinput}
+\begin{Soutput}
+          variete
+parcelle_f A L M
+         1 1 1 1
+         2 1 1 1
+         3 1 1 1
+\end{Soutput}
+\end{Schunk}
+Croisé - toutes les modalités sont analysées à travers toutes les modalités
+Complet - 
+Contraire de croisé est hierarchisé - 
+
+\begin{Schunk}
+\begin{Sinput}
+> lm1 = lm(rendement~parcelle_f*variete)
+> anova(lm1)
+\end{Sinput}
+\begin{Soutput}
+Analysis of Variance Table
+
+Response: rendement
+                   Df Sum Sq Mean Sq F value Pr(>F)
+parcelle_f          2  43.86  21.930               
+variete             2 246.01 123.004               
+parcelle_f:variete  4  86.38  21.595               
+Residuals           0   0.00                       
+\end{Soutput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Sinput}
+> lm2 = lm(rendement~parcelle_f+variete)
+> anova(lm2)
+\end{Sinput}
+\begin{Soutput}
+Analysis of Variance Table
+
+Response: rendement
+           Df Sum Sq Mean Sq F value  Pr(>F)  
+parcelle_f  2  43.86  21.930  1.0155 0.43988  
+variete     2 246.01 123.004  5.6959 0.06754 .
+Residuals   4  86.38  21.595                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{Soutput}
+\end{Schunk}
+Si les variétés étaient aléatoires, parcelles aussi - modèle complètement aléatoire
+On doit tester par rapport à l'interaction
+\begin{Schunk}
+\begin{Sinput}
+> interaction.plot(parcelle_f,variete,rendement)
+> lm3 = lm(rendement~variete)
+> anova(lm3)
+\end{Sinput}
+\begin{Soutput}
+Analysis of Variance Table
+
+Response: rendement
+          Df Sum Sq Mean Sq F value  Pr(>F)  
+variete    2 246.01 123.004  5.6666 0.04148 *
+Residuals  6 130.24  21.707                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{Soutput}
+\end{Schunk}
+
+lm3 - modèle à un facteur
+on teste variété à l'intéraction + parcelle - c'est la triche, on néglige les parcelles
+cela nous fait perdre une information dans nos données qui est fondamentale
+
+\section{Prodlait}
+\begin{Schunk}
+\begin{Sinput}
+> prod = read.table("prodlait.dat", header = T, dec = ".")
+> head(prod)
+\end{Sinput}
+\begin{Soutput}
+  Regime  race prodlait
+1   Haut race1       33
+2   Haut race1       35
+3   Haut race1       36
+4   Haut race1       43
+5    Bas race1       31
+6    Bas race1       32
+\end{Soutput}
+\begin{Sinput}
+> attach(prod)
+> interaction.plot(race,Regime,prodlait)
+> lm1 = lm(prodlait~race*Regime)
+> anova(lm1)
+\end{Sinput}
+\begin{Soutput}
+Analysis of Variance Table
+
+Response: prodlait
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+race         1  181.5  181.50   29.04 4.033e-05 ***
+Regime       2   49.0   24.50    3.92   0.03862 *  
+race:Regime  2    3.0    1.50    0.24   0.78911    
+Residuals   18  112.5    6.25                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{Soutput}
+\end{Schunk}
+Race - effet aléatoire - très significatif
+Regime - effet fixe - on a pas le droit de regarder
+
+
+\begin{Schunk}
+\begin{Sinput}
+> lm2 = lm(prodlait~Regime*race)
+> anova(lm2)
+\end{Sinput}
+\begin{Soutput}
+Analysis of Variance Table
+
+Response: prodlait
+            Df Sum Sq Mean Sq F value    Pr(>F)    
+Regime       2   49.0   24.50    3.92   0.03862 *  
+race         1  181.5  181.50   29.04 4.033e-05 ***
+Regime:race  2    3.0    1.50    0.24   0.78911    
+Residuals   18  112.5    6.25                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{Soutput}
+\end{Schunk}
+Pas intéressant
+
+\begin{Schunk}
+\begin{Sinput}
+> lm2 = aov(prodlait~Regime+race+Error(Regime:race))
+> summary(lm3)
+\end{Sinput}
+\begin{Soutput}
+Call:
+lm(formula = rendement ~ variete)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-6.6800 -1.6200 -0.3633  1.6367  8.3000 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)   62.620      2.690  23.280 4.12e-07 ***
+varieteL       5.833      3.804   1.533    0.176    
+varieteM      -6.957      3.804  -1.829    0.117    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 4.659 on 6 degrees of freedom
+Multiple R-squared:  0.6538,	Adjusted R-squared:  0.5385 
+F-statistic: 5.667 on 2 and 6 DF,  p-value: 0.04148
+\end{Soutput}
+\end{Schunk}
+Pour faire correctement un modèle mixte avec répetition
+2 modèles : 1 lm et 1 aov
+la race - l'effet aléatoire - on ne peut pas intérpreter la race sur le modèle aov
+regime - effet fixe - pas significatif, très limite
+
+La race introduit un effet aléatoire supplementaire dans l'exercice.
+
+Estimer les composantes de covariance - estimer sigma interaction et sigma race
+
+(1.5 - 6.25)/4 = 0
+E(Vsab) - variance/n
+
+
+\section{Tournesol}
+\begin{Schunk}
+\begin{Sinput}
+> setwd("~/4A/Stats")
+> tournesol = read.table("tournesol.txt", header = T, dec = ".")
+> head(tournesol)
+\end{Sinput}
+\begin{Soutput}
+  teneur testeur origine
+1  43.54      T1 afrique
+2  45.30      T1 afrique
+3  44.65      T1 afrique
+4  47.21      T2 afrique
+5  47.73      T2 afrique
+6  47.23      T2 afrique
+\end{Soutput}
+\begin{Sinput}
+> attach(tournesol)
+\end{Sinput}
+\end{Schunk}
+plan factoriel à effet mixte
+on a à la fois effet aléatoire et effet melangé
+plan croisé complet équilibré
+
+Hypothèses :  independance des variables - difficile à tester - dans l'énoncé
+              normalité des résidues - à posteriori
+              variance constante - ne depend pas de lignes et de colonnes
+              
+bartlett - tester les variances
+\begin{Schunk}
+\begin{Sinput}
+> bartlett.test(teneur, testeur:origine)
+\end{Sinput}
+\begin{Soutput}
+	Bartlett test of homogeneity of variances
+
+data:  teneur and testeur:origine
+Bartlett's K-squared = 3.3366, df = 5, p-value = 0.6482
+\end{Soutput}
+\begin{Sinput}
+> testeur:origine
+\end{Sinput}
+\begin{Soutput}
+ [1] T1:afrique T1:afrique T1:afrique T2:afrique T2:afrique T2:afrique
+ [7] T1:hongrie T1:hongrie T1:hongrie T2:hongrie T2:hongrie T2:hongrie
+[13] T1:maroc   T1:maroc   T1:maroc   T2:maroc   T2:maroc   T2:maroc  
+Levels: T1:afrique T1:hongrie T1:maroc T2:afrique T2:hongrie T2:maroc
+\end{Soutput}
+\end{Schunk}
+homocédasticité - égalité des variances
+
+\begin{Schunk}
+\begin{Sinput}
+> lm1 = lm(teneur~testeur*origine)
+\end{Sinput}
+\end{Schunk}
+plan est équilibré et donc les décompositions carrées sont orthogonales
+testeur*origine ~ origine*testeur
+
+\begin{Schunk}
+\begin{Sinput}
+> summary(lm1)
+\end{Sinput}
+\begin{Soutput}
+Call:
+lm(formula = teneur ~ testeur * origine)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-1.40667 -0.76917 -0.00167  0.66250  1.56333 
+
+Coefficients:
+                         Estimate Std. Error t value Pr(>|t|)    
+(Intercept)               44.4967     0.6057  73.465  < 2e-16 ***
+testeurT2                  2.8933     0.8566   3.378 0.005490 ** 
+originehongrie            -0.7367     0.8566  -0.860 0.406633    
+originemaroc               3.7400     0.8566   4.366 0.000918 ***
+testeurT2:originehongrie  -1.0767     1.2114  -0.889 0.391581    
+testeurT2:originemaroc    -3.2233     1.2114  -2.661 0.020757 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.049 on 12 degrees of freedom
+Multiple R-squared:  0.801,	Adjusted R-squared:  0.718 
+F-statistic: 9.658 on 5 and 12 DF,  p-value: 0.0006888
+\end{Soutput}
+\begin{Sinput}
+> anova(lm1)
+\end{Sinput}
+\begin{Soutput}
+Analysis of Variance Table
+
+Response: teneur
+                Df Sum Sq Mean Sq F value    Pr(>F)    
+testeur          1  9.592  9.5922  8.7156 0.0120941 *  
+origine          2 35.476 17.7381 16.1172 0.0003986 ***
+testeur:origine  2  8.079  4.0393  3.6702 0.0570553 .  
+Residuals       12 13.207  1.1006                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+\end{Soutput}
+\end{Schunk}
+anova - On peut regarder que le testeur - effet aléatoire
+
+\begin{Schunk}
+\begin{Sinput}
+> interaction.plot(testeur, origine, teneur)
+\end{Sinput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Sinput}
+> lm2 = aov(teneur~origine+testeur+Error(testeur:origine))
+> summary(lm2)
+\end{Sinput}
+\begin{Soutput}
+Error: testeur:origine
+          Df Sum Sq Mean Sq F value Pr(>F)
+origine    2  35.48  17.738   4.391  0.185
+testeur    1   9.59   9.592   2.375  0.263
+Residuals  2   8.08   4.039               
+
+Error: Within
+          Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 12  13.21   1.101               
+\end{Soutput}
+\end{Schunk}
+les machines apportent un biais dans l'analyse
+les huiles sont les memes wesh
+
+\begin{Schunk}
+\begin{Sinput}
+> par(mfrow=c(2,2))
+> plot(lm1)
+\end{Sinput}
+\end{Schunk}
+
+\begin{Schunk}
+\begin{Sinput}
+> shapiro.test(lm1$residuals)
+\end{Sinput}
+\begin{Soutput}
+	Shapiro-Wilk normality test
+
+data:  lm1$residuals
+W = 0.95552, p-value = 0.518
+\end{Soutput}
+\end{Schunk}
+
+Test de Levene
+\begin{Schunk}
+\begin{Sinput}
+> lm3 = lm(abs(lm1$residuals)~origine*testeur)
+> anova(lm3)
+\end{Sinput}
+\begin{Soutput}
+Analysis of Variance Table
+
+Response: abs(lm1$residuals)
+                Df  Sum Sq Mean Sq F value Pr(>F)
+origine          2 0.76573 0.38287  1.6538 0.2321
+testeur          1 0.00802 0.00802  0.0347 0.8554
+origine:testeur  2 0.35264 0.17632  0.7616 0.4882
+Residuals       12 2.77805 0.23150               
+\end{Soutput}
+\end{Schunk}
+teste la linéarité du modèle
+test global 
+
+
+\section{Psouris}
+
+\begin{Schunk}
+\begin{Sinput}
+> setwd("~/4A/Stats")
+> pdsouris = read.table("pdsouris.txt", header = T, dec = ".")
+> head(pdsouris)
+\end{Sinput}
+\begin{Soutput}
+  pere mere poids
+1    A    1  19.3
+2    A    1  21.9
+3    A    2  22.7
+4    A    2  24.6
+5    A    3  21.0
+6    A    3  19.1
+\end{Soutput}
+\begin{Sinput}
+> #attach(pdsouris)
+> mere=as.factor(pdsouris$mere)
+> pere = pdsouris$pere
+\end{Sinput}
+\end{Schunk}
+c'est pas un plan croisé
+plan complet - tous les croisements sont faits
+plan croisé - on peut croiser toutes les modalités de 1 avec toutes les modalités de l'autre
+
+\begin{Schunk}
+\begin{Sinput}
+> lm1 = lm(poids~pere+mere)

@@ -1,0 +1,136 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+\title{TP1 - Recursion equation}
+
+\maketitle
+
+\section{Model implementation}
+
+General function frecurs
+<<>>=
+# n is time, u0 the initial condition, func the recursive function
+
+frecurs <- function(show, n=0, u0, func,...) {
+  if (show) print(u0)
+  if (n==0) return(u0)
+  else return(frecurs(show = show, n=n-1, u0 = func(u0,...), func, ...))
+}
+@
+
+<<>>=
+frecurs2 <- function(n=0, u0, func,...) {
+  
+  if (n==0) return(u0)
+  else return(c(u0, frecurs2(n=n-1, u0 = func(u0,...), func, ...)))
+}
+
+@
+
+
+<<>>=
+exponential <- function(N, r) {
+  return(r*N)
+}
+@
+
+<<>>=
+logarithmic <- function(N, r, K) {
+  return(r*N*(1-(N/K)))
+}
+@
+
+<<>>=
+gompertz <- function(N, r, K) {
+  return(-r*N*log(N/K))
+}
+@
+
+\subsection{Basic verifications}
+<<>>=
+# Exponential
+frecurs(TRUE, 50, 2, exponential, 2)
+
+# Logarithmic
+frecurs(TRUE, 50, 2, logarithmic, 2, 10)
+
+# Gompertz
+frecurs(TRUE, 50, 2, gompertz, 2, 10)
+@
+
+\subsection{Stair step diagram}
+<<echo=TRUE, fig=TRUE>>=
+r0 = 1.5
+tmax = 50
+K0 = 10
+Ni = 2
+
+cobweb_diagram = function(tmax, Ni, funct, r = r0, K = K0, lim) {
+  
+  if (funct == 1) {
+      N = frecurs2(tmax, Ni, func = exponential, r = r0)
+      curve(r0*x, from=0, to = lim, las=1,
+        xlab = expression(N[t]), ylab = expression(N[t+1]), 
+        main = 'Exponential model stair step diagram', lwd = 2)
+  } else if (funct == 2) {
+      N = frecurs2(tmax, Ni, func = logarithmic, r = r0, K = K0)
+      curve(r0*x*(1-(x/K0)), from=0, to = lim, las=1,
+        xlab = expression(N[t]), ylab = expression(N[t+1]), 
+        main = 'Logistic model stair step diagram', lwd = 2)
+  } else if (funct == 3) {
+      N = frecurs2(tmax, Ni, func = gompertz, r = r0, K = K0)
+      curve(-r0*x*log(x/K0), from=0, to = lim, las=1,
+        xlab = expression(N[t]), ylab = expression(N[t+1]), 
+        main = 'Gompertz model stair step diagram', lwd = 2)
+  }
+  
+  abline(a = 0, b = 1, col = 'blue', lwd = 2)
+  abline(h = 0, lty = 3)
+  abline(v = 0, lty = 3)
+  points(N, N, type = 'S', col = 'red')
+  legend('topright', c('f(n)', expression (paste(paste(n[t+1], '='), n[t])), 'stair steps'), 
+       lty = 1, col = c('black', 'blue', 'red'), lwd = 2)
+}
+
+cobweb_diagram(tmax, Ni, 1, r = r0, lim = 30)
+cobweb_diagram(tmax, Ni, 2, r = r0, K0, 10)
+cobweb_diagram(tmax, Ni, 3, r = r0, K0, 10)
+@
+
+<<echo=TRUE, fig=TRUE>>=
+t = seq(0,50)
+par(mfrow = c(2,2))
+for (i in c(1.5, 2.8, 3.1, 3.7)) {
+  plot(t, frecurs2(tmax, 10, func = exponential, r = i), main = paste('r =', i))
+}
+@
+
+<<echo=TRUE, fig=TRUE>>=
+par(mfrow = c(2,2))
+for (i in c(1.5, 2.8, 3.1, 3.7)) {
+  plot(t, frecurs2(tmax, 10, func = logarithmic, r = i, K = 1000), main = paste('r =', i))
+}
+@
+
+<<echo=TRUE, fig=TRUE>>=
+par(mfrow = c(2,2))
+for (i in c(1.5, 2.8, 3.1, 3.7)) {
+  plot(t, frecurs2(tmax, 10, func = gompertz, r = i, K = 1000), main = paste('r =', i))
+}
+@
+
+\subsection{Bifurcation diagram}
+
+<<echo=TRUE, fig=TRUE>>=
+par(mfrow = c(1,1))
+plot(0, xlim = c(3,4), ylim = c(0,200), cex = 0.01)
+for (i in seq(0,4,0.01)) {
+  points(rep(i, 4002), frecurs2(500, 10, func = logarithmic, r = i, K = 200)[100:501], cex = 0.01)
+}
+
+@
+
+
+\end{document}

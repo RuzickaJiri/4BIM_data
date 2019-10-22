@@ -1,0 +1,81 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+<<>>=
+library(ade4)
+library(adegraphics)
+data(iris)
+@
+# scale - réduction
+# center - centré
+<<>>=
+acpiris = dudi.pca(iris[,1:4], center = T, scale = T)
+@
+
+<<>>=
+names(acpiris)
+@
+
+<<>>=
+s.label(acpiris$li, xax=1, yax=2)
+@
+
+<<>>=
+s.class(acpiris$li, iris$Species, col = T)
+@
+
+<<>>=
+acpiris$co
+@
+la corrélation est négative
+
+Cercle de corélation
+les axes sont définies par les vecteurs propres
+les vecteurs propres sont orthogonaux
+<<>>=
+s.corcircle(acpiris$co)
+@
+l'axe horizontale - distingue les pétales (longeur et largeur)
+      l'extrémité de la flèche - valeurs élevées
+l'axe verticale - 
+<<>>=
+s.class(acpiris$li, iris$Species, col = T)
+summary(acpiris)
+@
+
+
+<<>>=
+s.corcircle(acpiris$co, xax = 2, yax = 3)
+@
+
+<<>>=
+data(doubs)
+names(doubs)
+?doubs
+@
+
+<<>>=
+names(doubs$env)
+dim(doubs$env)
+acpenv = dudi.pca(doubs$env4)
+@
+Methode de Kaiser (uniquement pour ACP normée)
+sens biologiques des axes doit etre reconnus
+(axe 3 avant n'était pas informatif)
+<<>>=
+acpenv$eig
+acpenv$eig/sum(acpenv$eig)
+100*acpenv$eig/sum(acpenv$eig)
+
+s.corcircle(acpenv$co)
+@
+si les variables sont regroupées, elles sont correlées
+les vecteurs propres sont correlés aussi
+
+Pour la semaine prochaine - répresenter les stations et interpréter 
+                          - les 3 axes
+                          - expliquer pourquoi tel stations est sur tel endroit
+
+\end{document}

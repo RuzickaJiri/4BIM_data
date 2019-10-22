@@ -1,0 +1,100 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+<<>>=
+setwd("~/Stats/P")
+h = read.table("hem.txt", header = T, dec = ".")
+risto = h$Risto
+AAP = h$AAP
+JAK2 = h$JAK2
+plq = h$Plq
+
+plot(risto)
+@
+
+Modèle sans facteurs
+<<>>=
+lm0 = lm(risto~1)  
+summary(lm0)
+model.matrix(lm0)
+
+plot(risto)
+abline(lm0)
+@
+
+<<>>=
+lm1 = lm(log(risto)~1)
+summary(lm1)
+
+hist(risto) # distribution pas normale
+hist(log(risto)) # distribution normale
+plot(log(risto))
+abline(lm1)
+@
+avec le log on obtient une distribution normale
+la normalité nous sert pour faire des tests d'hypothèses
+
+<<>>=
+lm2 = lm(log(risto)~AAP)
+summary(lm2)
+model.matrix(lm2)
+
+anova(lm2)
+plot(log(risto)~AAP)
+
+@
+
+<<>>=
+AAP2 = AAP
+contrasts(AAP2)=matrix(nrow=3,ncol=2,c(2,-1,-1,0,1,-1))
+lm3 = lm(log(risto)~AAP2)
+
+summary(lm3)
+@
+
+<<>>=
+lm4 = lm(log(risto)~AAP*JAK2)
+summary(lm4)
+anova(lm4)
+@
+
+<<>>=
+lm5 = lm(log(risto)~AAP+JAK2)
+summary(lm5)
+anova(lm5)
+@
+
+<<>>=
+lm6 = lm(log(risto)~plq)
+summary(lm6)
+
+par(mfrow=c(2,2))
+plot(lm6)
+@
+
+<<>>=
+plq2 = plq^2
+lm7 = lm(log(risto)~plq + plq2)
+summary(lm7)
+
+par(mfrow=c(2,2))
+plot(lm7)
+@
+
+<<>>=
+lm8 = lm(log(risto)~ JAK2 + plq + plq2)
+summary(lm8)
+
+lm9 = lm(log(risto)~ JAK2 *(plq + plq2))
+summary(lm9)
+
+par(mfrow=c(1,1))
+plot(log(risto))
+curve(5.804e+00+ 3.420e-03*x -2.796e-06*x^2,add = T)
+curve(5.417e+00+ -1.464e-03*x -8.415e-07*x^2,add = T)
+@
+
+
+\end{document}

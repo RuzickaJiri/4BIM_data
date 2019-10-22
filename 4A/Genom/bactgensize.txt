@@ -1,0 +1,280 @@
+genus	species	strain	sizeKb	nORF
+Ferroplasma	acidarmanus	 	2000	NA
+Haloarcula	marismortui	ATCC-43049 	2700	NA
+Halobacterium	salinarium	ATCC-19700 	4000	NA
+Haloferax	volcanii	DS2 ATCC-29605	4200	NA
+Hyperthermus	butylicus	 	1900	NA
+Methanosarcina	barkeri	Fusaro 	2500	NA
+Nanoarchaeum	equitans	 	500	NA
+Pyrolobus	fumarii	 	1850	2000
+Sulfolobus	acidocaldarius	DSM 639	1900	NA
+Acidithiobacillus	ferrooxidans	ATCC-23270 	2900	NA
+Acidithiobacillus	ferrooxidans	ATCC-23270 	2611	2711
+Acinetobacter	sp.	ADP1, ATCC-33305	3583	3356
+Acinetobacter	calcoaceticus	ADP1 	3800	NA
+Actinobacillus	actinomycetemcomitans	HK1651 	2200	NA
+Anaplasma	phagocytophilum	 	1500	NA
+Atopobium	minutum	ATCC-33267 	1965	1689
+Azotobacter	vinelandii	AvOP 	4500	NA
+Bacillus	anthracis	A2012 	5093	NA
+Bacillus	anthracis	Ames 	4500	NA
+Bacillus	cereus	ATCC-14579 	5458	5477
+Bacillus	cereus	ATCC-10987 	5200	NA
+Bacillus	stearothermophilus	10 	4250	NA
+Bacteroides	fragilis	NCTC9343 (+638R)	5300	NA
+Bartonella	henselae	Houston 1	2000	NA
+Bartonella	quintana	Toulouse 	1600	NA
+Bordetella	bronchiseptica	RB50 	4900	NA
+Bordetella	parapertussis	12822 	3900	NA
+Bordetella	pertussis	Tohama I	3880	NA
+Bradyrhizobium	japonicum	USDA 110	10231	14192
+Brucella	abortus	 	3287	NA
+Brucella	suis	1330 	3300	NA
+Buchnera	aphidicola	SG 	640	NA
+Burkholderia	cepacia	cepacia J2315 	7600	NA
+Burkholderia	fungorum	LB400 	8000	NA
+Burkholderia	mallei	ATCC-23344 	6000	NA
+Burkholderia	pseudomallei	K96243 	6000	NA
+Campylobacter	fetus	 	1500	NA
+Carboxydothermus	hydrogenoformans	 	2100	NA
+Chlamydia	pneumoniae	 	1230	1069
+Chlamydia	trachomatis	L2 	1038	997
+Chlamydophila	abortus	 	1000	NA
+Chlamydophila	caviae	GPIC 	1200	NA
+Chlorobium	tepidum	TLS 	2100	NA
+Chloroflexus	aurantiacus	J-10-fl 	3000	NA
+Chromobacterium	violaceum	CCT 3496/ JMC 3496	4600	NA
+Clavibacter	michiganensis	michiganensis subsp. sepedonicus �	2500	NA
+Clostridium	botulinum	Hall strain A 	4000	NA
+Clostridium	difficile	630 (epidemic type X)	4400	NA
+Clostridium	sp.	BC1 ATCC-53464 	3815	NA
+Clostridium	tetani	Massachusetts 	4100	NA
+Clostridium	thermocellum	ATCC-27405 	4500	NA
+Colwellia	sp.	34H 	5300	NA
+Corynebacterium	diphtheriae	NCTC13129 	2488	NA
+Corynebacterium	efficiens	YS-314T 	3140	3031
+Corynebacterium	glutamicum	ATCC-13032 	3100	NA
+Cowdria	ruminantium	 	1576	NA
+Coxiella	burnetii	Nine Mile (RSA 493)	2100	NA
+Cytophaga	hutchinsonii	ATCC-33406 	4000	NA
+Dehalococcoides	ethenogenes	 	1500	NA
+Desulfitobacterium	hafniense	DCB-2 	4600	NA
+Desulfotalea	psychrophila	LSv54 	3660	NA
+Desulfovibrio	desulfuricans	 	3100	NA
+Desulfovibrio	vulgaris	Hildenborough 	3200	NA
+Dichelobacter	nodosus	VCS1703A 	1600	NA
+Ehrlichia	chaffeensis	 	1200	NA
+Ehrlichia	sennetsu	 	900	NA
+Enterococcus	faecalis	V583 	3209	2967
+Enterococcus	faecium	ATCC-35667 	2092	2000
+Enterococcus	faecium	DO 	2980	2869
+Escherichia	coli	UPEC-CFT073 	5230	NA
+Fibrobacter	succinogenes	S85 	3600	NA
+Francisella	tularensis	schu 4	2000	NA
+Fusobacterium	nucleatum	polymorphum ATCC-10953	2400	NA
+Gemmata	obscuriglobus	UQM 2246	9000	NA
+Geobacter	metallireducens	 	6800	NA
+Geobacter	sulfurreducens	 	2500	NA
+Gloeobacter	violaceus	PCC 7421	4600	NA
+Haemophilus	ducreyi	35000HP 	1800	NA
+Heliobacillus	mobilis	 	4200	4500
+Helicobacter	hepaticus	ATCC-51449 	1800	NA
+Lactobacillus	acidophilus	ATCC-700396 	1900	NA
+Lactobacillus	bulgaricus	 	2300	NA
+Lactobacillus	gasseri	ATCC-33323 	1800	NA
+Lactobacillus	plantarum	WCFS1 	3300	NA
+Lawsonia	intracellularis	 	4200	NA
+Legionella	pneumophila	Philadelphia-1 	4100	NA
+Leifsonia	xyli	subsp. xyli �	3000	NA
+Leptospira	interrogans	serovar icterohaemorrhagiae Lai	4800	NA
+Listeria	ivanovii	PAM55 	3000	NA
+Listeria	monocytogenes	4b 	2900	NA
+Listeria	welshimeri	 	3000	NA
+Magnetococcus	MC-1	 	4500	NA
+Magnetospirillum	magnetotacticum	MS-1, ATCC-31632 	4500	NA
+Mannheimia	haemolytica	haemolytica 2.4 	2400	NA
+Mannheimia	haemolytica	haemolytica PHL213 (ST1)	2700	NA
+Methylobacillus	flagellatus	KT 	2884	2608
+Methylobacterium	extorquens	AM1 	6000	NA
+Methylococcus	capsulatus	 	4600	NA
+Methylomonas	16a	 	4000	4000
+Microcystis	aeruginosa	PCC 7806 	3150	NA
+Mycobacterium	avium	104 	4700	NA
+Mycobacterium	avium	K-10 	4200	NA
+Mycobacterium	bovis	AF2122/97(spoligotype 9) 	4400	NA
+Mycobacterium	bovis	BCG, Pasteur 1173P2	4400	NA
+Mycobacterium	marinum	M 	4600	NA
+Mycobacterium	smegmatis	MC2155 	4000	NA
+Mycobacterium	tuberculosis	CSU-93 	4447	NA
+Mycobacterium	ulcerans	 	4400	NA
+Mycoplasma	capricolum	 	1200	NA
+Mycoplasma	hyopneumoniae	232 	890	766
+Mycoplasma	mycoides	SC PG1 	1280	NA
+Myxococcus	xanthus	 	9450	7500
+Neisseria	gonorrhoeae	FA 1090 ATCC-700825 	2193	1855
+Neisseria	meningitidis	serogroup C, FAM18 	2200	NA
+Nitrosomonas	europaea	ATCC-25978 	2980	NA
+Nostoc	punctiforme	ATCC-29133 	9760	NA
+Ochrobactrum	anthropi	 	4800	NA
+Parachlamydia	sp.	strain UWE25 	1600	NA
+Pectobacterium	carotovora	carotovora subsp. atroseptica �	4000	NA
+Pectobacterium	chrysanthemi	chrysanthemi 3937 	3700	NA
+Petrotoga	miotherma	ATCC-51224 	2177	2099
+Photorhabdus	luminescens	TT01 	5000	NA
+Pirellula	sp.	1 	7150	NA
+Polaribacter	filamentus	 	4184	3969
+Porphyromonas	gingivalis	W83 	2200	NA
+Prevotella	intermedia	17 	3800	NA
+Prochlorococcus	marinus	MED4 	1670	1700
+Prochlorococcus	marinus	MIT9313 	2400	2400
+Prosthecobacter	dejongeii	ATCC-27091 	4554	5003
+Pseudomonas	fluorescens	Pf0-1 	3500	NA
+Pseudomonas	fluorescens	SBW25 	6600	NA
+Pseudomonas	putida	KT2440 	6100	NA
+Pseudomonas	putida	PRS1 	6100	NA
+Pseudomonas	syringae	pv. tomato DC3000	6100	NA
+Rhizobium	leguminosarum	bv. viciae 3841	5800	NA
+Rhodococcus	sp.	I24 	5487	6103
+Rhodobacter	capsulatus	SB1003 	3700	2099
+Rhodobacter	sphaeroides	2.4.1. 	3900	NA
+Rhodopseudomonas	palustris	CGA009 	5460	NA
+Rhodospirillum	rubrum	ATOC 	3400	NA
+Rickettsia	typhi	Wilmington 	1400	NA
+Ruminococcus	albus	8 	4000	NA
+Ruminococcus	flavefaciens	FD-1 	4440	NA
+Salmonella	enteritidis	LK5 	4500	NA
+Salmonella	paratyphi	ATCC-9150D 	4600	NA
+Salmonella	typhimurium	TR7095 	4500	NA
+Shewanella	oneidensis	(putrefaciens) MR-1 ATCC-700550	4500	NA
+Shigella	flexneri	301 	4700	NA
+Silicibacter	pomeroyi	DSS-3 	4400	NA
+Sphingomonas	aromaticivorans	F199 	3800	NA
+Spiroplasma	kunkelii	CR2-3x 	1600	NA
+Staphylococcus	aureus	930131 	2564	2654
+Staphylococcus	aureus	ATCC-29213 	2621	2858
+Staphylococcus	aureus	COL 	2800	NA
+Staphylococcus	aureus	NCTC 8325 	2800	NA
+Staphylococcus	aureus	MRSA252 	2902	NA
+Staphylococcus	aureus	MSSA476 	2804	NA
+Staphylococcus	epidermidis	ATCC-12228 	2400	NA
+Staphylococcus	epidermidis	ATCC-14990 	2377	2394
+Staphylococcus	epidermidis	RP62A 	2400	NA
+Methanosarcina	mazei	Go1 	2800	NA
+Methanopyrus	kandleri	AV19 	1694	1691
+Methanosarcina	acetivorans	C2A 	5751	4540
+Pyrobaculum	aerophilum	IM2 	2222	2587
+Pyrococcus	furiosus	 	1908	2065
+Sulfolobus	tokodaii	7 	2694	2826
+Sulfolobus	solfataricus	P2 	2992	2977
+Thermoplasma	volcanium	GSS1 	1584	1524
+Thermoplasma	acidophilum	 	1564	1478
+Halobacterium	sp.	NRC-1 	2014	2058
+Pyrococcus	abyssi	GE5 	1765	1765
+Aeropyrum	pernix	K1 	1669	2620
+Pyrococcus	horikoshii	OT3 	1738	1979
+Archaeoglobus	fulgidus	DSM4304 	2178	2493
+Methanobacterium	thermoautotrophicum	delta H	1751	1918
+Methanococcus	jannaschii	DSM 2661	1664	1750
+Xanthomonas	axonopodis	pv. citri 306	5273	4386
+Xanthomonas	campestris	pv.campestris ATCC-33913 	5076	4182
+Streptomyces	coelicolor	A3(2) 	8667	7825
+Thermoanaerobacter	tengcongensis	MB4T 	2689	2588
+Streptococcus	pyogenes	MGAS8232 	1895	1889
+Fusobacterium	nucleatum	ATCC-25586 	2170	2067
+Corynebacterium	glutamicum	ATCC-13032 	3300	3040
+Clostridium	perfringens	13 	3031	2660
+Brucella	melitensis	16M 	3294	3197
+Ralstonia	solanacearum	GMI1000 	5810	5120
+Agrobacterium	tumefaciens	C58-DuPont 	4915	5402
+Agrobacterium	tumefaciens	C58-Cereon 	4915	5299
+Nostoc	sp.	PCC 7120 	6413	5366
+Listeria	monocytogenes	EGD-e 	2944	2855
+Listeria	innocua	Clip11262, rhamnose-negative 	3011	2981
+Salmonella	typhimurium	SGSC1412 	4857	4597
+Salmonella	typhi	CT18 	4809	4600
+Yersinia	pestis	CO-92 Biovar Orientalis	4653	4012
+Rickettsia	conorii	Malish 7 	1268	1374
+Streptococcus	pneumoniae	R6 	2038	2043
+Sinorhizobium	meliloti	1021 	6690	6205
+Clostridium	acetobutylicum	ATCC-824D 	4100	4927
+Streptococcus	pneumoniae	TIGR4 	2160	2094
+Mycoplasma	pulmonis	UAB CTIP 	963	782
+Mycobacterium	tuberculosis	CDC 1551 	4403	4187
+Staphylococcus	aureus	Mu50 (VRSA) 	2878	2697
+Staphylococcus	aureus	N315 (MRSA) 	2813	2594
+Lactococcus	lactis	IL1403 	2365	2266
+Streptococcus	pyogenes	SF370 (M1) 	1852	1696
+Caulobacter	crescentus	 	4016	3737
+Pasteurella	multocida	Pm70 	2250	2014
+Escherichia	coli	O157:H7. Sakai 	5594	5448
+Mycobacterium	leprae	TN 	3268	1604
+Escherichia	coli	O157:H7 EDL933 	4100	5283
+Mesorhizobium	loti	MAFF303099 	7596	6752
+Buchnera	aphidicola	APS 	640	564
+Pseudomonas	aeruginosa	PAO1 	6264	5570
+Vibrio	cholerae	serotype O1, Biotype El Tor, strain N16961	4000	3885
+Xylella	fastidiosa	CVC 8.1.b clone 9.a.5.c 	2679	2904
+Chlamydia	pneumoniae	J138 	1228	1070
+Bacillus	halodurans	C-125 	4202	4066
+Neisseria	meningitidis	Z2491 (serogroup A) 	2184	2121
+Neisseria	meningitidis	MC58 (serogroup B) 	2272	2158
+Chlamydia	trachomatis	MoPn / Nigg 	1069	924
+Chlamydia	pneumoniae	AR39 	1229	1052
+Campylobacter	jejuni	NCTC 11168 	1641	1654
+Ureaplasma	urealyticum	(parvum) serovar 3 	751	650
+Deinococcus	radiodurans	R1 	3284	3187
+Thermotoga	maritima	MSB8 	1860	1877
+Chlamydia	pneumoniae	CWL029 	1230	1052
+Helicobacter	pylori	J99 	1643	1495
+Rickettsia	prowazekii	Madrid E 	1111	834
+Chlamydia	trachomatis	D/UW-3/CX (serovar D)	1042	896
+Treponema	pallidum	subsp. pallidum Nichols	1138	1041
+Mycobacterium	tuberculosis	H37Rv (lab strain)	4411	4402
+Aquifex	aeolicus	VF5 	1551	1544
+Borrelia	burgdorferi	B31 	1230	1256
+Bacillus	subtilis	168 	4214	4099
+Helicobacter	pylori	26695 	1667	1590
+Escherichia	coli	K12- MG1655 	4639	4289
+Mycoplasma	pneumoniae	M129 	816	677
+Synechocystis	sp.	PCC6803 	3573	3168
+Mycoplasma	genitalium	G-37 	580	468
+Haemophilus	influenzae	KW20 	1830	1850
+Streptococcus	agalactiae	NEM316, ATCC-12403 	2000	NA
+Streptococcus	equi	 	2300	NA
+Streptococcus	gordonii	 	4351	NA
+Streptococcus	mitis	NCTC 12261 	2200	NA
+Streptococcus	mutans	UA159 	2032	NA
+Streptococcus	pneumoniae	23 F (Spanish 23F-1)	2200	NA
+Streptococcus	pyogenes	Manfredo (M5) 	1980	NA
+Streptococcus	suis	 	2200	NA
+Streptococcus	thermophilus	LMG 18311 	1800	NA
+Streptococcus	thermophilus	CNRZ 1066 	1796	2002
+Streptococcus	uberis	 	2200	NA
+Streptomyces	ambofaciens	 	8000	NA
+Streptomyces	avermitilis	MA-4680 	8700	NA
+Synechococcus	sp.	PCC 6301 	2690	NA
+Synechococcus	sp.	PCC 7002 	3200	NA
+Synechococcus	sp.	WH8102 	2720	NA
+Thermobifida	fusca	YX 	8000	NA
+Thermochromatium	tepidum	MC ATCC-43061 	3295	3375
+Thermosynechococcus	elongatus	BP-1 	2600	NA
+Thermus	thermophilus	HB27 	1820	NA
+Treponema	denticola	35405 	2800	NA
+Wolbachia	pipientis	endosymbiont of Culex quinquefasciatus	1500	NA
+Wolbachia	sp.	wNo, wUni, wVul 	1500	NA
+Wolbachia	sp.	Drosophila and Brugia malayi	1400	NA
+Wolbachia	sp.	endosymbiont of Onchocerca volvulus	1100	NA
+Vibrio	fischeri	 	4136	4121
+Vibrio	vulnificus	YJ016 	5000	NA
+Xanthomonas	axonopodis	pv. aurantifolii  	5000	NA
+Xanthomonas	campestris	pv. campestris 8004 	5000	NA
+Xanthomonas	citri	 	5000	NA
+Xylella	fastidiosa	dixon 	2600	NA
+Xylella	fastidiosa	Temecula1 	2600	NA
+Xylella	fastidiosa	ann1 	2600	NA
+Xylella	fastidiosa	Pierce's Disease Strain	2700	NA
+Yersinia	enterocolitica	8081 	4631	NA
+Yersinia	pestis	KIM5 P12 	4600	NA
+Yersinia	pseudotuberculosis	IP 32953 	4300	NA
+Zymomonas	mobilis	ZM4 	2052	NA
+Zymomonas	mobilis	 	1833	1886

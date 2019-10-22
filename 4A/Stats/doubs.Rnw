@@ -1,0 +1,37 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+<<>>=
+library(ade4)
+data(doubs)
+names(doubs)
+plot(doubs$xy, type = 'l', col = 'blue', lwd = 5)
+names(doubs$env)
+s.value(doubs$xy, scale(doubs$env$pH, center = TRUE, scale = FALSE))
+s.value(doubs$xy, scale(doubs$env$nit, center = TRUE, scale = FALSE))
+dim(doubs$env)
+@
+
+<<>>=
+graphe = function(x) s.value(doubs$xy, scale(doubs$env[,x], center = TRUE, scale = FALSE), sub = colnames(doubs$env)[x], csub = 3)
+
+par(mfrow = c(3,2))
+sapply(6:11, graphe)
+@
+
+<<>>=
+head(doubs$fish)
+head(doubs$species)
+abondance = apply(doubs$fish,1,sum)
+head(abondance)
+s.value(doubs$xy, scale(abondance, center = TRUE, scale = FALSE))
+@
+
+<<>>=
+
+@
+
+
+\end{document}

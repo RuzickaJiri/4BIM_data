@@ -1,0 +1,51 @@
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+<<>>=
+setwd("~/4A/Genom")
+polygensize = read.delim("polygensize.txt", header = T, sep = '\t', dec = ".")
+
+head(polygensize)
+polygensize$size = rowSums(polygensize[,5:11])/1000
+polygensize$size
+
+boxplot(polygensize$size)
+barplot(polygensize$size, col = polygensize$subgroup)
+boxplot(polygensize$size~polygensize$subgroup)
+@
+il semblerait qu'il y ait un lien entre la taille de génomes et les subgroupes
+
+<<>>=
+BC = rowSums(polygensize[,6:7])/1000
+DEFG = rowSums(polygensize[,8:11])/1000
+montest=cor.test(DEFG,BC,method = 'spearman')
+
+plot(BC~DEFG)
+text(1,1.15,labels = paste('rho=',round(montest$estimate,digits=4)))
+abline(lm(BC~DEFG), col='red', lwd=2)
+
+@
+Correlation dans les données
+
+à l'échelle intrqspécifique
+
+origine des variations entre O157:H7 EDL933 vs MG1655
+
+Modalités de transferts horizontaux:
+transformation
+transduction
+conjugaison
+
+
+\section{Etat de projets génome}
+Genome Analysis 155 662
+Metagenome Analysis 55 328 
+Sequencing Projects
+    Complete Projects 19 100
+On séquence surtout des bactéries - c'est facile et petit génome
+Transcriptomique - 
+
+
+\end{document}

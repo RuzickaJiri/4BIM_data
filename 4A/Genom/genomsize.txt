@@ -1,0 +1,109 @@
+SP	GEN	G_SIZE	CAT	ETA	INT_N	INT_L	TE_N
+Aeropyrum pernix	1608	1.67	1	0.05463	NA	NA	NA
+Agrobacterium tumefaciens C58	3783	4.91	1	NA	NA	NA	NA
+Aquifex aeolicus	1153	1.55	1	NA	NA	NA	NA
+Archaeoglobus fulgidus	1843	2.18	1	NA	NA	NA	NA
+Bacillus halodurans	3610	4.20	1	NA	NA	NA	NA
+Bacillus subtilis	3661	4.21	1	NA	NA	NA	NA
+Borrelia burgdorferi	698	1.52	1	0.05714	NA	NA	NA
+Brucella melitensis	2727	3.30	1	NA	NA	NA	NA
+Buchnera aphidicola Sg	510	0.64	1	NA	NA	NA	NA
+Buchnera sp	522	0.64	1	NA	NA	NA	NA
+Campylobacter jejuni	1173	1.64	1	0.0525	NA	NA	NA
+Caulobacter crescentus	3208	4.02	1	NA	NA	NA	NA
+Chlamydia muridarum	780	1.07	1	NA	NA	NA	NA
+Chlamydia trachomatis	770	1.04	1	NA	NA	NA	NA
+Chlamydophila pneumoniae AR39	957	1.23	1	NA	NA	NA	NA
+Chlamydophila pneumoniae CWL029	919	1.23	1	NA	NA	NA	NA
+Chlamydophila pneumoniae J138	927	1.23	1	NA	NA	NA	NA
+Chlorobium tepidum TLS	2004	2.15	1	NA	NA	NA	NA
+Clostridium acetobutylicum	3358	3.94	1	NA	NA	NA	NA
+Clostridium perfringens	2497	3.03	1	NA	NA	NA	NA
+Corynebacterium glutamicum	2766	3.31	1	NA	NA	NA	NA
+Deinococcus radiodurans	2512	3.24	1	NA	NA	NA	NA
+Escherichia coli K12	3669	4.64	1	0.0789	NA	NA	NA
+Escherichia coli O157H7	4509	5.50	1	NA	NA	NA	NA
+Escherichia coli O157H7 EDL933	4561	5.53	1	NA	NA	NA	NA
+Fusobacterium nucleatum	1801	2.17	1	NA	NA	NA	NA
+Haemophilus influenzae	1506	1.83	1	0.0932	NA	NA	NA
+Halobacterium sp.	1828	2.56	1	NA	NA	NA	NA
+Helicobacter pylori 26695	1298	1.67	1	0.12	NA	NA	NA
+Helicobacter pylori J99	1230	1.64	1	0.334	NA	NA	NA
+Lactococcus lactis	1997	2.37	1	NA	NA	NA	NA
+Listeria innocua	2575	3.01	1	NA	NA	NA	NA
+Listeria monocytogenes	2496	2.94	1	0.123	NA	NA	NA
+Mesorhizobium loti	5815	7.60	1	NA	NA	NA	NA
+Methanobacterium thermoautotrophicum	1599	1.75	1	NA	NA	NA	NA
+Methanococcus jannaschii	1585	1.74	1	NA	NA	NA	NA
+Methanopyrus kandleri	1397	1.69	1	NA	NA	NA	NA
+Methanosarcina acetivorans	4114	5.75	1	NA	NA	NA	NA
+Methanosarcina mazei	3109	4.10	1	NA	NA	NA	NA
+Mycobacterium leprae	1391	3.27	1	NA	NA	NA	NA
+Mycobacterium tuberculosis CDC1551	3504	4.40	1	0.0007	NA	NA	NA
+Mycobacterium tuberculosis H37Rv	3287	4.41	1	NA	NA	NA	NA
+Mycoplasma genitalium	358	0.58	1	NA	NA	NA	NA
+Mycoplasma pneumoniae	535	0.82	1	NA	NA	NA	NA
+Mycoplasma pulmonis	631	0.96	1	NA	NA	NA	NA
+Neisseria meningitidis MC58	1914	2.27	1	0.155	NA	NA	NA
+Neisseria meningitidis Z2491	1855	2.18	1	NA	NA	NA	NA
+Nostoc sp	5091	7.21	1	NA	NA	NA	NA
+Pasteurella multocida	1816	2.26	1	0.433	NA	NA	NA
+Pseudomonas aeruginosa	4857	6.26	1	0.02019	NA	NA	NA
+Pyrobaculum aerophilum	2083	2.22	1	NA	NA	NA	NA
+Pyrococcus abyssi	1427	1.77	1	NA	NA	NA	NA
+Pyrococcus furiosus	1679	1.91	1	NA	NA	NA	NA
+Pyrococcus horikoshii	1472	1.74	1	NA	NA	NA	NA
+Ralstonia solanacearum	4461	3.72	1	NA	NA	NA	NA
+Rickettsia conorii	1195	1.27	1	NA	NA	NA	NA
+Rickettsia prowazekii	738	1.11	1	NA	NA	NA	NA
+Salmonella typhi	3711	4.81	1	0.05871	NA	NA	NA
+Salmonella typhimurium LT2	3841	4.86	1	NA	NA	NA	NA
+Sinorhizobium meliloti	2950	6.68	1	NA	NA	NA	NA
+Staphylococcus aureus MW2	2308	2.82	1	0.04789	NA	NA	NA
+Staphylococcus aureus Mu50	2374	2.88	1	NA	NA	NA	NA
+Staphylococcus aureus N315	2279	2.81	1	NA	NA	NA	NA
+Streptococcus pneumoniae R6	1707	2.04	1	0.02428	NA	NA	NA
+Streptococcus pneumoniae TIGR4	1790	2.16	1	NA	NA	NA	NA
+Streptococcus pyogenes	1437	1.85	1	NA	NA	NA	NA
+Streptococcus pyogenes MGAS315	1540	1.90	1	NA	NA	NA	NA
+Streptococcus pyogenes MGAS8232	1535	1.90	1	NA	NA	NA	NA
+Streptomyces coelicolor	6572	9.06	1	NA	NA	NA	NA
+Sulfolobus solfataricus	2408	2.99	1	0.01261	NA	NA	NA
+Sulfolobus tokodaii	2329	2.69	1	NA	NA	NA	NA
+Synechocystis PCC6803	2967	3.57	1	NA	NA	NA	NA
+Thermoanaerobacter tengcongensis	2250	2.69	1	NA	NA	NA	NA
+Thermoplasma acidophilum	1267	1.56	1	NA	NA	NA	NA
+Thermoplasma volcanium	1285	1.58	1	NA	NA	NA	NA
+Thermotoga maritima	1313	1.86	1	NA	NA	NA	NA
+Treponema pallidum	836	1.14	1	NA	NA	NA	NA
+Ureaplasma urealyticum	536	0.75	1	NA	NA	NA	NA
+Vibrio cholerae	3327	4.03	1	0.0820	NA	NA	NA
+Xanthomonas campestris	3531	5.08	1	NA	NA	NA	NA
+Xanthomonas citri	3676	5.18	1	NA	NA	NA	NA
+Xylella fastidiosa	2344	2.81	1	0.111	NA	NA	NA
+Yersinia pestis	3432	6.41	1	NA	NA	NA	NA
+Encephalitozoon cuniculi	1997	2.90	2	0.00351	0.0065	38	NA
+Cryptosporidium parvum	4500	10.40	2	0.02331	NA	NA	NA
+Saccharomyces cerevisiae	6213	12.05	2	0.02294	0.0410	288	0.331
+Giardia lamblia	5800	12.30	2	0.00759	0.0002	35	NA
+Candida sp	9260	13.50	2	NA	0.0100	208	NA
+Schizosaccharomyces pombe	4824	13.80	2	NA	0.9800	81	NA
+Cryptococcus neoformans	NA	20.00	2	0.02526	NA	NA	NA
+Plasmodium falciparum	5268	22.85	2	0.00082	1.3900	179	0
+Leishmania major	8600	33.60	2	0.00521	0.0000	0	NA
+Dictyostelium discoideum	9000	34.00	2	0.01825	1.2900	177	NA
+Trypanosoma sp	10000	39.20	2	0.00657	0.0000	0	NA
+Neurospora crassa	13000	42.90	2	0.01130	1.6000	101	NA
+Toxoplasma gondii	10000	87.00	2	0.00688	NA	NA	NA
+Caenorhabditis elegans	21200	100.26	3	0.00328	4.9400	124	33.5
+Arabidopsis thaliana	25498	125.00	4	0.00323	6.1800	170	7
+Drosophila melanogaster	13676	137.00	3	0.00374	4.6700	628	22
+Ciona intestinalis	16000	156.00	3	0.00305	5.8000	300	135.5
+Schistosoma sp	17500	270.00	3	NA	NA	NA	NA
+Anopheles gambiae	13683	278.00	3	0.00298	3.4700	1061	15
+Fugu rubripes	38000	365.00	5	0.00101	5.2009	298	30
+Oryza sativa	60256	466.00	4	0.00077	3.6000	446	NA
+Strongylocentrotus purpuratus	27350	800.00	3	0.00230	NA	NA	NA
+Mus musculus	30000	2500.00	5	0.00027	7.4000	3888	2901
+Homo sapiens	30000	2900.00	5	0.00031	7.7000	4661	3163
+Zea mays	50000	3000.00	4	0.00330	NA	NA	NA

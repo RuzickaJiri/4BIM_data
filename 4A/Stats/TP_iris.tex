@@ -1,0 +1,18 @@
+\documentclass{article}
+
+\usepackage{Sweave}
+\begin{document}
+\input{TP_iris-concordance}
+
+\begin{Schunk}
+\begin{Sinput}
+> library(ade4)
+> library(adegraphics)
+> data(iris)
+\end{Sinput}
+\end{Schunk}
+# scale - réduction
+# center - centré
+\begin{Schunk}
+\begin{Sinput}
+> acpiris = dudi.pca(iris[,1:4], center = T, scale = T)

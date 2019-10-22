@@ -1,0 +1,54 @@
+
+PART 3 - IRIS Dataset - DATA CLUSTERING USING HIERARCHICAL CLUSTERING
+
+
+Try the hierarchical clustering using the method 'complete' and the Euclidean distance metric='euclidean' as follows.
+Import a new mudules:
+import scipy.cluster.hierarchy as sch
+
+Compute the hierarchical aggregation:
+Z = sch.linkage(objects, method='complete', metric='euclidean')
+
+Draw the dendrogram:
+fig = plt.figure(figsize=(20, 40))
+dendro = sch.dendrogram(Z, orientation='left', leaf_rotation=0, leaf_font_size=15)
+
+JUPYTER NOTEBOOK HINTS FOR OUTPUT CELL VIEW:
+Single click in the left margin of the output cell to switch: full view vs. reduced view with scrollbar(s).
+In reduced view mode, double click in the output cell to zoom in/out (works only for some graphics like dendrograms).
+Double click in the left margin of the output cell to hide/show the output cell.
+
+Draw the graph of the grouping distances:
+fig = plt.figure(figsize=(10, 7))
+plt.plot(Z[:,2],'o-')
+plt.grid(axis='y')
+
+Compute the clusters by cutting in the dendrogram:
+nb_clust = 3 # number of clusters
+clusters = sch.fcluster(Z, nb_clust, criterion='maxclust')
+
+Look at the contingency table of species vs cluster labels.
+
+Look at the clusters in different 2D projections using pairplot.
+
+Compare with different settings:
+- Try other linkage methods 'single', 'average', 'ward'.
+- Try the manhattan distance (parameter metric='cityblock').
+
+
+
+PART 4 - IRIS Dataset - DATA CLUSTERING - QUALITY MEASURES SILHOUETTE, ENTROPY, NMI
+
+
+Compute the silhouette coefficient with metrics.silhouette_score(objects.values, clusters, metric='euclidean', sample_size=None)
+
+Compute the entropy of each clusters with:
+proba = crosstab.values/crosstab.values.sum(axis=1, keepdims=True) # divide each element of a row by the sum of the row
+print(proba)
+entropy = [stats.entropy(row, base=2) for row in proba]
+print("entropy of each cluster: ", entropy)
+
+Compute the NMI with: metrics.normalized_mutual_info_score(classes, clusters, average_method='max')
+
+
+
