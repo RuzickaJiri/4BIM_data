@@ -1,0 +1,743 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass[11pt]{article}
+
+    
+    
+    \usepackage[T1]{fontenc}
+    % Nicer default font (+ math font) than Computer Modern for most use cases
+    \usepackage{mathpazo}
+
+    % Basic figure setup, for now with no caption control since it's done
+    % automatically by Pandoc (which extracts ![](path) syntax from Markdown).
+    \usepackage{graphicx}
+    % We will generate all images so they have a width \maxwidth. This means
+    % that they will get their normal width if they fit onto the page, but
+    % are scaled down if they would overflow the margins.
+    \makeatletter
+    \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth
+    \else\Gin@nat@width\fi}
+    \makeatother
+    \let\Oldincludegraphics\includegraphics
+    % Set max figure width to be 80% of text width, for now hardcoded.
+    \renewcommand{\includegraphics}[1]{\Oldincludegraphics[width=.8\maxwidth]{#1}}
+    % Ensure that by default, figures have no caption (until we provide a
+    % proper Figure object with a Caption API and a way to capture that
+    % in the conversion process - todo).
+    \usepackage{caption}
+    \DeclareCaptionLabelFormat{nolabel}{}
+    \captionsetup{labelformat=nolabel}
+
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{xcolor} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage{textcomp} % defines textquotesingle
+    % Hack from http://tex.stackexchange.com/a/47451/13684:
+    \AtBeginDocument{%
+        \def\PYZsq{\textquotesingle}% Upright quotes in Pygmentized code
+    }
+    \usepackage{upquote} % Upright quotes for verbatim code
+    \usepackage{eurosym} % defines \euro
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    \usepackage[inline]{enumitem} % IRkernel/repr support (it uses the enumerate* environment)
+    \usepackage[normalem]{ulem} % ulem is needed to support strikethroughs (\sout)
+                                % normalem makes italics be italics, not underlines
+    
+
+    
+    
+    % Colors for the hyperref package
+    \definecolor{urlcolor}{rgb}{0,.145,.698}
+    \definecolor{linkcolor}{rgb}{.71,0.21,0.01}
+    \definecolor{citecolor}{rgb}{.12,.54,.11}
+
+    % ANSI colors
+    \definecolor{ansi-black}{HTML}{3E424D}
+    \definecolor{ansi-black-intense}{HTML}{282C36}
+    \definecolor{ansi-red}{HTML}{E75C58}
+    \definecolor{ansi-red-intense}{HTML}{B22B31}
+    \definecolor{ansi-green}{HTML}{00A250}
+    \definecolor{ansi-green-intense}{HTML}{007427}
+    \definecolor{ansi-yellow}{HTML}{DDB62B}
+    \definecolor{ansi-yellow-intense}{HTML}{B27D12}
+    \definecolor{ansi-blue}{HTML}{208FFB}
+    \definecolor{ansi-blue-intense}{HTML}{0065CA}
+    \definecolor{ansi-magenta}{HTML}{D160C4}
+    \definecolor{ansi-magenta-intense}{HTML}{A03196}
+    \definecolor{ansi-cyan}{HTML}{60C6C8}
+    \definecolor{ansi-cyan-intense}{HTML}{258F8F}
+    \definecolor{ansi-white}{HTML}{C5C1B4}
+    \definecolor{ansi-white-intense}{HTML}{A1A6B2}
+
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \providecommand{\tightlist}{%
+      \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Additional commands for more recent versions of Pandoc
+    \newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{{#1}}}
+    \newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{{#1}}}
+    \newcommand{\ImportTok}[1]{{#1}}
+    \newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{{#1}}}}
+    \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{{#1}}}
+    \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{{#1}}}
+    \newcommand{\BuiltInTok}[1]{{#1}}
+    \newcommand{\ExtensionTok}[1]{{#1}}
+    \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{{#1}}}
+    \newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{{#1}}}
+    \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{{#1}}}}}
+    
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Optimisation\_TD3}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@fm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vm\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@sa\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@dl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=urlcolor,
+      linkcolor=linkcolor,
+      citecolor=citecolor,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{Algorithme Génétique}\label{algorithme-guxe9nuxe9tique}
+
+    \subsection{Introduction}\label{introduction}
+
+    Rendu : code, réponses détaillées, illustrer les propos, docstring pas
+obligatoire, conclusions sur la convergence, etc.
+
+    \subsection{Marche aléatoire}\label{marche-aluxe9atoire}
+
+    Nous allons appliquer l'algorithme génétique à un problème assez simple.
+On modélise une marche aléatoire en dimension 1 sur T pas de temps, dans
+la direction d : \(x(t + 1) = x(t) + d\) avec d tiré uniformément sur le
+doublet \(\{−1, 1\}\), et \(t = \{0, . . . , T − 1\}\).
+
+On cherche à optimiser la trajectoire de la marche de sorte à ce qu'elle
+reste dans un intervalle déterminé \([−r_0 ; r_0 ]\). Le paramètre
+\(r_0\) sera à faire varier. Le coût d'une trajectoire sera égal au
+nombre de pas situés hors de l'intervalle \([−r_0 ; r_0 ]\).
+
+\emph{Écrire une fonction qui génère aléatoirement un génome. Elle prend
+\(T\), la longueur de la marche, en paramètre d'entrée et sort un
+vecteur de longueur \(T\) prenant ses valeurs dans \(\{−1, 1\}\) de
+façon aléatoire.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}57}]:} \PY{k+kn}{from} \PY{n+nn}{mpl\PYZus{}toolkits}\PY{n+nn}{.}\PY{n+nn}{mplot3d} \PY{k}{import} \PY{n}{Axes3D}
+         \PY{k+kn}{from} \PY{n+nn}{matplotlib} \PY{k}{import} \PY{n}{cm}
+         \PY{k+kn}{from} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{ticker} \PY{k}{import} \PY{n}{LinearLocator}\PY{p}{,} \PY{n}{FormatStrFormatter}
+         \PY{k+kn}{import} \PY{n+nn}{matplotlib}\PY{n+nn}{.}\PY{n+nn}{pyplot} \PY{k}{as} \PY{n+nn}{plt}
+         \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k}{as} \PY{n+nn}{np}
+         \PY{k+kn}{import} \PY{n+nn}{random}
+         \PY{k+kn}{import} \PY{n+nn}{statistics} \PY{k}{as} \PY{n+nn}{stats}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{form\PYZus{}genome}\PY{p}{(}\PY{n}{T}\PY{p}{,} \PY{n}{d}\PY{p}{)}\PY{p}{:}
+            \PY{n}{res}  \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{o}{*}\PY{n}{T}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{res}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                \PY{n}{rand} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randn}\PY{p}{(}\PY{p}{)}
+                \PY{k}{if} \PY{n}{rand} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}\PY{p}{:}
+                    \PY{n}{res}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{n}{d}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}
+                \PY{k}{if} \PY{n}{rand} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{0}\PY{p}{:}
+                    \PY{n}{res}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{+}\PY{o}{=} \PY{n}{d}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+            \PY{k}{return} \PY{n}{res}
+        
+        
+        \PY{n}{form\PYZus{}genome}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}2}]:} [1, -1, -1, 1, 1, 1, 1, -1, -1, 1]
+\end{Verbatim}
+            
+    \emph{Écrire la fonction qui calcule le coût d'un génome. Elle prend en
+paramètre d'entrée : un génome et \(r_0\) , la borne de l'intervalle.
+Elle retourne un scalaire.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}71}]:} \PY{k}{def} \PY{n+nf}{cost}\PY{p}{(}\PY{n}{genome}\PY{p}{,} \PY{n}{r0}\PY{p}{)}\PY{p}{:}
+             \PY{n}{price} \PY{o}{=} \PY{l+m+mi}{0}
+             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{n+nb}{len}\PY{p}{(}\PY{n}{genome}\PY{p}{)}\PY{o}{+}\PY{l+m+mi}{1}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{if} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{genome}\PY{p}{[}\PY{p}{:}\PY{n}{i}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{l+m+mi}{0}\PY{p}{:}
+                     \PY{k}{if} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{genome}\PY{p}{[}\PY{p}{:}\PY{n}{i}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZlt{}}\PY{o}{=} \PY{o}{\PYZhy{}}\PY{n}{r0}\PY{p}{:}
+                         \PY{n}{price} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1} \PY{c+c1}{\PYZsh{} \PYZhy{}sum(genome[:i]) \PYZhy{} r0}
+                 \PY{k}{else} \PY{p}{:}
+                     \PY{k}{if} \PY{n+nb}{sum}\PY{p}{(}\PY{n}{genome}\PY{p}{[}\PY{p}{:}\PY{n}{i}\PY{p}{]}\PY{p}{)} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{n}{r0}\PY{p}{:}
+                         \PY{n}{price} \PY{o}{+}\PY{o}{=} \PY{l+m+mi}{1} \PY{c+c1}{\PYZsh{} sum(genome[:i]) \PYZhy{} r0}
+             \PY{k}{return} \PY{n}{price}
+         
+         \PY{n}{gen1} \PY{o}{=} \PY{n}{form\PYZus{}genome}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{gen1}\PY{p}{)}
+         \PY{n}{cost}\PY{p}{(}\PY{n}{gen1}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[1, -1, -1, 1, -1]
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}71}]:} 0
+\end{Verbatim}
+            
+    \subsection{Codage de l'algorithme
+génétique}\label{codage-de-lalgorithme-guxe9nuxe9tique}
+
+    \emph{Initialisation : écrire une fonction qui créée aléatoirement une
+population initiale de N génomes de taille \(T\).}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{get\PYZus{}population}\PY{p}{(}\PY{n}{N}\PY{p}{,} \PY{n}{T}\PY{p}{)}\PY{p}{:}
+            \PY{n}{population} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{N}\PY{p}{)}\PY{p}{:}
+                \PY{n}{population}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{form\PYZus{}genome}\PY{p}{(}\PY{n}{T}\PY{p}{,} \PY{p}{[}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+            \PY{k}{return} \PY{n}{population}
+        
+        \PY{n}{get\PYZus{}population}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} [[1, 1, 1, -1, -1, 1, -1, -1, 1, -1],
+         [-1, -1, -1, 1, -1, -1, 1, -1, -1, -1],
+         [-1, -1, 1, -1, 1, 1, 1, -1, 1, 1],
+         [-1, -1, 1, -1, 1, 1, -1, 1, 1, -1],
+         [1, -1, -1, 1, -1, -1, -1, 1, 1, 1],
+         [1, 1, -1, 1, 1, -1, 1, -1, 1, -1],
+         [1, -1, 1, -1, -1, 1, 1, -1, 1, -1],
+         [1, -1, 1, 1, -1, -1, -1, -1, 1, -1],
+         [1, -1, -1, -1, 1, -1, 1, -1, 1, -1],
+         [1, -1, 1, -1, -1, 1, 1, 1, 1, -1]]
+\end{Verbatim}
+            
+    \emph{Écrire une fonction qui trie les génomes d'une population en
+fonction de leur coût. Indice : utiliser la fonction numpy.argsort().}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{sort\PYZus{}pop}\PY{p}{(}\PY{n}{pop}\PY{p}{,} \PY{n}{r0}\PY{p}{)}\PY{p}{:}
+            \PY{n}{cost\PYZus{}array} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{pop}\PY{p}{:}
+                \PY{n}{cost\PYZus{}array}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{cost}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{r0}\PY{p}{)}\PY{p}{)}
+            \PY{c+c1}{\PYZsh{} print(cost\PYZus{}array)}
+            \PY{n}{indexs} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{argsort}\PY{p}{(}\PY{n}{cost\PYZus{}array}\PY{p}{)}
+            \PY{c+c1}{\PYZsh{} print(indexs)}
+            \PY{n}{sorted\PYZus{}pop} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{indexs}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                \PY{n}{sorted\PYZus{}pop}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{pop}\PY{p}{[}\PY{n}{indexs}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{]}\PY{p}{)}
+            \PY{k}{return} \PY{n}{sorted\PYZus{}pop}
+        
+        
+        \PY{n}{my\PYZus{}pop} \PY{o}{=} \PY{n}{get\PYZus{}population}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{)}
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{my\PYZus{}pop}\PY{p}{)}
+        \PY{n}{sort\PYZus{}pop}\PY{p}{(}\PY{n}{my\PYZus{}pop}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[1, 1, 1, 1, 1], [1, -1, -1, -1, 1], [-1, -1, -1, 1, -1], [1, 1, 1, -1, 1], [1, -1, -1, -1, 1]]
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} [[1, -1, -1, -1, 1],
+         [1, -1, -1, -1, 1],
+         [-1, -1, -1, 1, -1],
+         [1, 1, 1, -1, 1],
+         [1, 1, 1, 1, 1]]
+\end{Verbatim}
+            
+    \emph{Écrire une fonction qui sélectionne les \(N_s\) génomes ayant les
+valeurs de coût les plus importantes (sélection par rang). On prendra
+par exemple \(N_s = N/2\). La valeur de sortie correspondra à la
+population à faire muter et/ou à croiser.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{selection}\PY{p}{(}\PY{n}{pop}\PY{p}{,} \PY{n}{r0}\PY{p}{)}\PY{p}{:}
+            \PY{k}{return} \PY{n}{sort\PYZus{}pop}\PY{p}{(}\PY{n}{pop}\PY{p}{,} \PY{n}{r0}\PY{p}{)}\PY{p}{[}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{pop}\PY{p}{)}\PY{o}{/}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{:}\PY{p}{]}
+        
+        \PY{n}{selection}\PY{p}{(}\PY{n}{my\PYZus{}pop}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} [[-1, -1, -1, 1, -1], [1, 1, 1, -1, 1], [1, 1, 1, 1, 1]]
+\end{Verbatim}
+            
+    \emph{Nous allons maintenant procéder à la mutation des génomes
+sélectionnés. La mutation est définie par un taux \(T_m\) qui correspond
+à la probabilité qu'un gène \(a\) de muter. Il s'agit donc ici de
+parcourir les gènes de chaque génome et de les faire muter avec une
+probabilité \(T_m\). Écrire la fonction qui permet d'effectuer cette
+mutation sur la population sélectionnée.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{def} \PY{n+nf}{mut\PYZus{}genome}\PY{p}{(}\PY{n}{genome}\PY{p}{,} \PY{n}{Tm}\PY{p}{)}\PY{p}{:}
+            \PY{n}{new\PYZus{}genome} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{genome}\PY{p}{:}
+                \PY{n}{rand} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{randn}\PY{p}{(}\PY{p}{)}
+                \PY{k}{if} \PY{n+nb}{abs}\PY{p}{(}\PY{n}{rand}\PY{p}{)} \PY{o}{\PYZlt{}} \PY{n}{Tm}\PY{p}{:}
+                    \PY{n}{new\PYZus{}genome}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{n}{i}\PY{p}{)}
+                \PY{k}{else} \PY{p}{:} 
+                    \PY{n}{new\PYZus{}genome}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{i}\PY{p}{)}
+            \PY{k}{return} \PY{n}{new\PYZus{}genome}
+                    
+        \PY{k}{def} \PY{n+nf}{mut\PYZus{}pop}\PY{p}{(}\PY{n}{pop}\PY{p}{,} \PY{n}{Tm}\PY{p}{)}\PY{p}{:}
+            \PY{n}{new\PYZus{}pop} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+            \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n}{pop}\PY{p}{:}
+                \PY{n}{new\PYZus{}pop}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{mut\PYZus{}genome}\PY{p}{(}\PY{n}{i}\PY{p}{,} \PY{n}{Tm}\PY{p}{)}\PY{p}{)}
+            \PY{k}{return} \PY{n}{new\PYZus{}pop}
+        
+        \PY{n+nb}{print}\PY{p}{(}\PY{n}{selection}\PY{p}{(}\PY{n}{my\PYZus{}pop}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{)}
+        \PY{n}{mut\PYZus{}pop}\PY{p}{(}\PY{n}{selection}\PY{p}{(}\PY{n}{my\PYZus{}pop}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{)}
+                    
+                    
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[-1, -1, -1, 1, -1], [1, 1, 1, -1, 1], [1, 1, 1, 1, 1]]
+
+    \end{Verbatim}
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} [[-1, -1, 1, 1, -1], [1, 1, -1, 1, 1], [1, 1, 1, 1, -1]]
+\end{Verbatim}
+            
+    \emph{Nous allons maintenant effectuer le croisement de la population
+mutée. Le croisement se définit par un taux \(T_c\) qui indique la
+probabilité avec laquelle un croisement entre génomes peut intervenir.
+Coder la fonction qui effectue le croisement entre individus de la
+population sélectionnée avec la probabilité \(T_c\). La position du
+croisement dans le génome, ainsi que l'individu avec lequel le
+croisement sera effectué seront tirés aléatoirement.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}63}]:} \PY{k}{def} \PY{n+nf}{cross\PYZus{}over}\PY{p}{(}\PY{n}{pop}\PY{p}{,} \PY{n}{Tc}\PY{p}{)}\PY{p}{:}
+         
+             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{pop}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{g} \PY{o}{=} \PY{n}{pop}\PY{p}{[}\PY{n}{i}\PY{p}{]}
+                 \PY{k}{if} \PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{p}{)} \PY{o}{\PYZgt{}} \PY{n}{Tc}\PY{p}{:}
+                     \PY{n}{pos} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{p}{)}\PY{o}{*}\PY{n+nb}{len}\PY{p}{(}\PY{n}{g}\PY{p}{)}\PY{p}{)}
+                     \PY{n}{sec\PYZus{}g} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+                     \PY{n}{r} \PY{o}{=} \PY{l+m+mi}{0}
+                     \PY{k}{while} \PY{n}{sec\PYZus{}g} \PY{o}{==} \PY{p}{[}\PY{p}{]} \PY{o+ow}{or} \PY{n}{sec\PYZus{}g} \PY{o}{==} \PY{n}{g}\PY{p}{:}
+                         \PY{n}{r} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n}{random}\PY{o}{.}\PY{n}{random}\PY{p}{(}\PY{p}{)}\PY{o}{*}\PY{n+nb}{len}\PY{p}{(}\PY{n}{pop}\PY{p}{)}\PY{p}{)}
+                         \PY{n}{sec\PYZus{}g} \PY{o}{=} \PY{n}{pop}\PY{p}{[}\PY{n}{r}\PY{p}{]}
+                     \PY{c+c1}{\PYZsh{}print(\PYZsq{}Crossing\PYZhy{}over à la position \PYZsq{} + str(pos) +}
+                      \PY{c+c1}{\PYZsh{}    \PYZsq{} de \PYZsq{} + str(g) + \PYZsq{} et \PYZsq{} + str(sec\PYZus{}g))}
+                     \PY{n}{pop}\PY{p}{[}\PY{n}{i}\PY{p}{]} \PY{o}{=} \PY{n}{g}\PY{p}{[}\PY{p}{:}\PY{n}{pos}\PY{p}{]} \PY{o}{+} \PY{n}{sec\PYZus{}g}\PY{p}{[}\PY{n}{pos}\PY{p}{:}\PY{p}{]}
+                     \PY{n}{pop}\PY{p}{[}\PY{n}{r}\PY{p}{]} \PY{o}{=} \PY{n}{sec\PYZus{}g}\PY{p}{[}\PY{p}{:}\PY{n}{pos}\PY{p}{]} \PY{o}{+} \PY{n}{g}\PY{p}{[}\PY{n}{pos}\PY{p}{:}\PY{p}{]}
+                     
+         
+         \PY{n}{my\PYZus{}sel} \PY{o}{=} \PY{n}{selection}\PY{p}{(}\PY{n}{my\PYZus{}pop}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{my\PYZus{}sel}\PY{p}{)}
+         \PY{n}{cross\PYZus{}over}\PY{p}{(}\PY{n}{my\PYZus{}sel}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{)}
+         \PY{n+nb}{print}\PY{p}{(}\PY{n}{my\PYZus{}sel}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+[[-1, -1, -1, 1, -1], [1, 1, 1, -1, 1], [1, 1, 1, 1, 1]]
+[[-1, -1, -1, -1, 1], [1, 1, 1, 1, -1], [1, 1, 1, 1, 1]]
+
+    \end{Verbatim}
+
+    \emph{Mettre à jour la population courante avec la population mutée et
+incrémenter le compteur de génération.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}64}]:} \PY{k}{def} \PY{n+nf}{evolve}\PY{p}{(}\PY{n}{N}\PY{p}{,} \PY{n}{T}\PY{p}{,} \PY{n}{r0}\PY{p}{,} \PY{n}{Tm}\PY{p}{,} \PY{n}{Tc}\PY{p}{,} \PY{n}{it}\PY{p}{)}\PY{p}{:}
+             \PY{n}{pop} \PY{o}{=} \PY{n}{get\PYZus{}population}\PY{p}{(}\PY{n}{N}\PY{p}{,} \PY{n}{T}\PY{p}{)}
+             \PY{n}{costs\PYZus{}gener} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n}{it}\PY{p}{)}\PY{p}{:}
+                 \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Generation }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n+nb}{str}\PY{p}{(}\PY{n}{i}\PY{p}{)}\PY{p}{)}
+                 \PY{c+c1}{\PYZsh{}print(pop)}
+                 \PY{n}{sel} \PY{o}{=} \PY{n}{selection}\PY{p}{(}\PY{n}{pop}\PY{p}{,} \PY{n}{r0}\PY{p}{)}
+                 \PY{c+c1}{\PYZsh{}print(len(sel))}
+                 \PY{n}{changed\PYZus{}sel} \PY{o}{=} \PY{n}{mut\PYZus{}pop}\PY{p}{(}\PY{n}{sel}\PY{p}{,} \PY{n}{Tm}\PY{p}{)}
+                 \PY{n}{cross\PYZus{}over}\PY{p}{(}\PY{n}{changed\PYZus{}sel}\PY{p}{,} \PY{n}{Tc}\PY{p}{)}
+                 \PY{n}{pop} \PY{o}{=} \PY{n}{changed\PYZus{}sel} \PY{o}{+} \PY{n}{sort\PYZus{}pop}\PY{p}{(}\PY{n}{pop}\PY{p}{,} \PY{n}{r0}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{pop}\PY{p}{)}\PY{o}{/}\PY{o}{/}\PY{l+m+mi}{2}\PY{p}{)}\PY{p}{]}
+                 \PY{n}{costs\PYZus{}gener}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{costs\PYZus{}pop}\PY{p}{(}\PY{n}{pop}\PY{p}{,} \PY{n}{r0}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+             \PY{c+c1}{\PYZsh{}print(range(it), costs\PYZus{}gener)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{plot}\PY{p}{(}\PY{n+nb}{range}\PY{p}{(}\PY{n}{it}\PY{p}{)}\PY{p}{,} \PY{n}{costs\PYZus{}gener}\PY{p}{)}
+             \PY{n}{plt}\PY{o}{.}\PY{n}{show}\PY{p}{(}\PY{p}{)}
+                 
+             \PY{k}{return} \PY{n}{pop}
+                 
+         \PY{n}{evolve}\PY{p}{(}\PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{5}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{10}\PY{p}{)}
+             
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Generation 0
+Generation 1
+Generation 2
+Generation 3
+Generation 4
+Generation 5
+Generation 6
+Generation 7
+Generation 8
+Generation 9
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_21_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}64}]:} [[-1, 1, -1, 1, -1],
+          [1, 1, 1, 1, -1],
+          [1, -1, 1, 1, -1],
+          [-1, 1, 1, -1, -1],
+          [1, 1, -1, 1, -1]]
+\end{Verbatim}
+            
+    \emph{Calculer le coût moyen de la nouvelle population, ainsi que le
+coût minimum obtenu.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}65}]:} \PY{k}{def} \PY{n+nf}{costs\PYZus{}pop}\PY{p}{(}\PY{n}{pop}\PY{p}{,} \PY{n}{r0}\PY{p}{)}\PY{p}{:}
+             \PY{n}{costs} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{n+nb}{len}\PY{p}{(}\PY{n}{pop}\PY{p}{)}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{costs}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{cost}\PY{p}{(}\PY{n}{pop}\PY{p}{[}\PY{n}{i}\PY{p}{]}\PY{p}{,} \PY{n}{r0}\PY{p}{)}\PY{p}{)}
+             \PY{k}{return} \PY{p}{(}\PY{n}{stats}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{n}{costs}\PY{p}{)}\PY{p}{,} \PY{n+nb}{min}\PY{p}{(}\PY{n}{costs}\PY{p}{)}\PY{p}{,} \PY{n+nb}{max}\PY{p}{(}\PY{n}{costs}\PY{p}{)}\PY{p}{)}
+         
+         \PY{n}{costs\PYZus{}pop}\PY{p}{(}\PY{n}{my\PYZus{}pop}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}65}]:} (2, 0, 6)
+\end{Verbatim}
+            
+    \emph{Quel(s) critère(s) d'arrêt utiliseriez-vous ? Faire tourner
+l'algorithme avec \(T = 500\), \(r_0 = 4\), \(N = 100\), \(T_m = 0.05\)
+et \(T_c = 0.1\). Tracer l'évolution du coût moyen au fur et à mesure
+des générations.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}74}]:} \PY{n}{evolve}\PY{p}{(}\PY{l+m+mi}{100}\PY{p}{,} \PY{l+m+mi}{500}\PY{p}{,} \PY{l+m+mi}{4}\PY{p}{,} \PY{l+m+mf}{0.05}\PY{p}{,} \PY{l+m+mf}{0.1}\PY{p}{,} \PY{l+m+mi}{100}\PY{p}{)}
+         \PY{l+m+mi}{1}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Generation 0
+Generation 1
+Generation 2
+Generation 3
+Generation 4
+Generation 5
+Generation 6
+Generation 7
+Generation 8
+Generation 9
+Generation 10
+Generation 11
+Generation 12
+Generation 13
+Generation 14
+Generation 15
+Generation 16
+Generation 17
+Generation 18
+Generation 19
+Generation 20
+Generation 21
+Generation 22
+Generation 23
+Generation 24
+Generation 25
+Generation 26
+Generation 27
+Generation 28
+Generation 29
+Generation 30
+Generation 31
+Generation 32
+Generation 33
+Generation 34
+Generation 35
+Generation 36
+Generation 37
+Generation 38
+Generation 39
+Generation 40
+Generation 41
+Generation 42
+Generation 43
+Generation 44
+Generation 45
+Generation 46
+Generation 47
+Generation 48
+Generation 49
+Generation 50
+Generation 51
+Generation 52
+Generation 53
+Generation 54
+Generation 55
+Generation 56
+Generation 57
+Generation 58
+Generation 59
+Generation 60
+Generation 61
+Generation 62
+Generation 63
+Generation 64
+Generation 65
+Generation 66
+Generation 67
+Generation 68
+Generation 69
+Generation 70
+Generation 71
+Generation 72
+Generation 73
+Generation 74
+Generation 75
+Generation 76
+Generation 77
+Generation 78
+Generation 79
+Generation 80
+Generation 81
+Generation 82
+Generation 83
+Generation 84
+Generation 85
+Generation 86
+Generation 87
+Generation 88
+Generation 89
+Generation 90
+Generation 91
+Generation 92
+Generation 93
+Generation 94
+Generation 95
+Generation 96
+Generation 97
+Generation 98
+Generation 99
+
+    \end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_25_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}74}]:} 1
+\end{Verbatim}
+            
+    \emph{Faire varier les paramètres suivants (\(N\), \(r_0\) , \(T_m\) et
+\(T_c\)) pour étudier leur influence.}
+
+    \emph{Décrire le comportement de l'algorithme (évolution des coûts moyen
+et minimum) et interpréter la convergence en fonction des paramètres
+utilisés.}
+
+    \emph{Quelles différences remarquez-vous par rapport aux méthodes
+différentielles étudiées jusqu'à maintenant (descente de gradient,
+Newton) ?}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
