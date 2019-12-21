@@ -1,0 +1,17 @@
+beta = 0.045
+g = 0.027
+N = 5
+Tmax = 50 
+  
+I = 1
+S = N - I
+t = 0
+
+while t<Tmax & I > 0
+  deltaT = -log(runif(0,1))/(beta*S*I+g*I)
+  if runif(0,1) < (beta*S*I/(beta*S*I+g*I))
+    I = I+1
+  else I=I-1
+  t = t + deltaT
+  S = N - I
+  
