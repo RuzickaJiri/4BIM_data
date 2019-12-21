@@ -1,0 +1,92 @@
+program: stmt+ EOF ;
+
+log_expr:
+      log_paren
+    | log_inf
+    | log_sup
+    | log_eq
+    | log_conj
+    | log_disj
+    | log_negation
+    | log_literal
+    ;
+    
+log_paren: LPAR log_expr RPAR ;
+    
+log_inf: math_expr '<' math_expr ;
+
+log_sup: math_expr '>' math_expr ;
+
+log_eq: math_expr '==' math_expr ;
+    
+log_conj: log_expr 'and' log_expr {2, left} ;
+
+log_disj: log_expr 'or' log_expr {1, left} ;
+
+log_negation: 'not' log_expr {3, left} ;
+
+
+math_expr:
+      math_paren
+    | math_plus
+    | math_minus
+    | math_times
+    | math_div
+    | math_var
+    | math_literal
+    ;
+
+math_paren: LPAR math_expr RPAR ;
+
+math_plus: math_expr '+' math_expr {1, left} ;
+
+math_minus: math_expr '-' math_expr {1, left} ;
+
+math_times: math_expr '*' math_expr {2, left} ;
+
+math_div: math_expr '/' math_expr  {2, left} ;
+
+math_var: identifier ;
+
+stmt:
+      skip
+    | assign
+    | block
+    | loop
+    | cond
+    | print_log
+    | print_math
+    ;
+    
+skip: SKIP SEMICOLON ;
+
+assign: identifier ASSIGN math_expr SEMICOLON ;
+
+block: LBRA stmt* RBRA ;
+
+loop: WHILE LPAR log_expr RPAR block ;
+
+cond: IF LPAR log_expr RPAR block ELSE block ;
+
+print_log: PRINT_LOG LPAR log_expr RPAR SEMICOLON ;
+
+print_math: PRINT_MATH LPAR math_expr RPAR SEMICOLON ;
+
+
+terminals
+SEMICOLON: ';' ;
+LPAR: '(' ;
+RPAR: ')' ;
+LBRA: '{' ;
+RBRA: '}' ;
+ASSIGN: ':=' ;
+SKIP: 'skip' ;
+IF: 'if' ;
+ELSE: 'else' ;
+WHILE: 'while' ;
+PRINT_LOG: 'print_log' ;
+PRINT_MATH: 'print_math' ;
+identifier: /[a-zA-Z_][_a-zA-Z0-9]*/ ;
+log_literal: /true|false/ {prefer} ;
+math_literal: /[0-9]+/ ;
+KEYWORD: /\w+/ ;

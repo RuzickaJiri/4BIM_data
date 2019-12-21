@@ -1,0 +1,38 @@
+program: log_expr EOF ;
+
+log_expr:
+      log_paren
+    | log_conj
+    | log_disj
+    | log_negation
+	| log_var
+    | log_literal
+    ;
+    
+log_paren: LPAR log_expr RPAR ;
+    
+log_conj: log_expr 'and' log_expr {2, left} ;
+
+log_disj: log_expr 'or' log_expr {1, left} ;
+
+log_negation: 'not' log_expr {3, left} ;
+
+log_var: identifier ;
+
+terminals
+SEMICOLON: ';' ;
+LPAR: '(' ;
+RPAR: ')' ;
+LBRA: '{' ;
+RBRA: '}' ;
+ASSIGN: ':=' ;
+SKIP: 'skip' ;
+IF: 'if' ;
+ELSE: 'else' ;
+WHILE: 'while' ;
+PRINT_LOG: 'print_log' ;
+PRINT_MATH: 'print_math' ;
+identifier: /[a-zA-Z_][_a-zA-Z0-9]*/ ;
+log_literal: /true|false/ {prefer} ;
+math_literal: /[0-9]+/ ;
+KEYWORD: /\w+/ ;
